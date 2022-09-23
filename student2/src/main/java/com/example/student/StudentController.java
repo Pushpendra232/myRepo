@@ -1,6 +1,7 @@
 package com.example.student;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,10 +31,10 @@ public class StudentController
     //to get student list through rno
 	@GetMapping (value="/Student/{rno}")
 	
-	public Student getStudentDetails(@PathVariable ("rno")int rno) 
+	public Optional<Student> getStudentDetails(@PathVariable ("rno")int rno) 
 	{
 		 
-		Student Student = studentservice.getDetails(rno);
+		Optional<Student> Student = studentservice.getDetails(rno);
 		return Student;
 		}
 		
@@ -49,9 +50,9 @@ public class StudentController
 	
 	// to delete student data from list
 	@DeleteMapping ("/Student/{rno}")
-	public String deleteRno (@PathVariable("rno") int  rno ) 
+	String deleteRno (@PathVariable("rno") int  rno ) 
 	{
-		 return this.studentservice.deleteRno(rno);
+		 return studentservice.deleteRno(rno);
 		
   }
 	// to update student data in existing 
@@ -59,7 +60,7 @@ public class StudentController
 	@PutMapping("/Student")
 	public Student updateStudent (@RequestBody Student Student )
 	{
-		this.studentservice.updateStudent(Student);
+	studentservice.updateStudent(Student);
 		return Student;
 	}
 	}
