@@ -18,7 +18,7 @@ public class AtmController {
 	@Autowired
 	private IAtm iatm;
 
-	
+	// methods for withdraw amount 	
 // methods for withdraw amount 	
 	@PostMapping (value ="Atmw/{acno}/{amt}")
 	Optional<AtmPojo> withdraw (@PathVariable int acno,@PathVariable int amt)
@@ -26,7 +26,7 @@ public class AtmController {
 		Optional<AtmPojo> atmPojo = iatm.withdraw(acno,amt);
 		return atmPojo;
 	}
-
+	// method for deposit amount 
 // method for deposit amount 
 	@PostMapping (value ="/Atmd/{acno}/{amt}")
 	Optional<AtmPojo> deposit (@PathVariable ("acno") int acno,@PathVariable("amt") int amt)
